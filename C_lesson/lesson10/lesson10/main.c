@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+void SayHello() {
+	printf("Hello World! \n");
+}
+
+int main() {
+
+	// º¯ÊýÖ¸Õë
+	void(*p)();
+	p = SayHello;
+	p();
+	return 0;
+}
