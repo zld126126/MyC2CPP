@@ -1,28 +1,32 @@
+参考https://www.cnblogs.com/nanzhi/p/7883911.html
+- [1.安装 && 配置](#1安装--配置)
+	- [1.1.在以下3个文件开头添加“#define _WIN32_WINNT 0x0500”](#11在以下3个文件开头添加define-_win32_winnt-0x0500)
+	- [1.2.打开vs2013/2015开发命令工具,切换到libevent的目录:](#12打开vs20132015开发命令工具切换到libevent的目录)
+	- [1.3.编译成功后再libevent-2.0.22-stable目录下生成三个lib文件：](#13编译成功后再libevent-2022-stable目录下生成三个lib文件)
+	- [1.4.环境配置：](#14环境配置)
+	- [1.5.新创建一个vs2013/2015的c++项目a,里面解决方案创建一个libevent的空项目方案b,a包含b](#15新创建一个vs20132015的c项目a里面解决方案创建一个libevent的空项目方案ba包含b)
+- [2.启动项目:](#2启动项目)
+	- [2.1核心代码:](#21核心代码)
 
-- [安装 && 配置](#安装--配置)
-- [启动项目:](#启动项目)
-  - [核心代码:](#核心代码)
 
-
-## 安装 && 配置
-    参考https://www.cnblogs.com/nanzhi/p/7883911.html
+## 1.安装 && 配置
     
-    1.在以下3个文件开头添加“#define _WIN32_WINNT 0x0500”
+### 1.1.在以下3个文件开头添加“#define _WIN32_WINNT 0x0500”
         libevent-2.0.21-stable\event_iocp.c
         libevent-2.0.21-stable\evthread_win32.c
         libevent-2.0.21-stable\listener.c
 
-    2.打开vs2013/2015开发命令工具,切换到libevent的目录:
+### 1.2.打开vs2013/2015开发命令工具,切换到libevent的目录:
         nmake /f Makefile.nmake
 
-    3.编译成功后再libevent-2.0.22-stable目录下生成三个lib文件：
+### 1.3.编译成功后再libevent-2.0.22-stable目录下生成三个lib文件：
         libevent.lib、libevent_core.lib、libevent_extras.lib
 
-    4.环境配置：
+### 1.4.环境配置：
         项目下建一个Lib目录，将上面三个lib文件copy到该目录下。
         新建一个Include目录，将libevent-2.0.21-stable\include文件夹下的所有内容和WIN32-Code文件夹下的所有内容拷贝到新建的include目录下，两个event2目录下的文件可合并在一起。
 
-    5.新创建一个vs2013/2015的c++项目a,里面解决方案创建一个libevent的空项目方案b,a包含b
+### 1.5.新创建一个vs2013/2015的c++项目a,里面解决方案创建一个libevent的空项目方案b,a包含b
         a-VC++目录：
             包含目录，添加上面的Include目录;
             库目录，添加上面的Lib目录;
@@ -35,10 +39,10 @@
 
             高级-->编译为：编译为C++代码（/TP）,（因为我的工程用到C++的函数所以配置这个）
 
-## 启动项目:
+## 2.启动项目:
     a-项目解决方案配置debug启动即可
         
-### 核心代码:
+### 2.1核心代码:
 
 ```
 #include "stdafx.h"
