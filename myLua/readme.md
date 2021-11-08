@@ -1,4 +1,5 @@
 参考https://blog.csdn.net/yejinxiong001/article/details/74204070
+
 - [1.安装 & 配置lua -- 项目lua](#1安装--配置lua----项目lua)
 	- [1.1创建一个解决方案承接lua库](#11创建一个解决方案承接lua库)
 	- [1.2配置lua](#12配置lua)
@@ -8,8 +9,10 @@
 	- [2.1创建一个解决方案myLua](#21创建一个解决方案mylua)
 	- [2.2配置myLua](#22配置mylua)
 	- [2.3测试lua集成:](#23测试lua集成)
-- [print(require("socket"));](#printrequiresocket)
-- [-- Author: Diego Nehab](#---author-diego-nehab)
+- [3.使用lua-socket-- 项目lua-socket](#3使用lua-socket---项目lua-socket)
+	- [3.1创建一个解决方案luaSocket](#31创建一个解决方案luasocket)
+	- [3.2配置luaSocket](#32配置luasocket)
+	- [3.3测试lua+luasocket集成](#33测试lualuasocket集成)
 
 
 ## 1.安装 & 配置lua -- 项目lua
@@ -42,7 +45,7 @@
 			  -->在【链接器】—> 【输入】—> 【附加依赖库】 lua.lib
 
 ### 2.3测试lua集成:
-	核心代码:
+myLua.cpp
 ```
 #include "stdafx.h"
 #include<iostream>
@@ -57,8 +60,7 @@ int main()
 	system("pause");
 	return 0;
 }
-
-```	
+```
 
 ## 3.使用lua-socket-- 项目lua-socket
 ### 3.1创建一个解决方案luaSocket
@@ -105,12 +107,6 @@ dofile("./2socket.lua");
 2socket.lua
 ```
 print("2socket.lua");
-print(require("socket"));
------------------------------------------------------------------------------
--- TCP sample: Little program to dump lines received at a given port
--- LuaSocket sample files
--- Author: Diego Nehab
------------------------------------------------------------------------------
 local socket = require("socket")
 print(socket);
 host = host or "*"
