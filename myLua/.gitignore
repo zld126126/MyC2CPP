@@ -25,6 +25,7 @@
 *.la
 *.a
 #*.lib
+*.log
 
 # Executables
 *.exe
@@ -34,3 +35,5 @@
 /ipch/
 /myLua/Debug/
 /lua/Debug/
+/lua/Debug/
+/luaSocket/Debug/
