@@ -50,6 +50,7 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>../lua</AdditionalIncludeDirectories>
       <CompileAs>CompileAsC</CompileAs>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

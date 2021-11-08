@@ -34,9 +34,14 @@ static const luaL_Reg loadedlibs[] = {
   {LUA_IOLIBNAME, luaopen_io},
   {LUA_OSLIBNAME, luaopen_os},
   {LUA_STRLIBNAME, luaopen_string},
-  {LUA_BITLIBNAME, luaopen_bit32},
+  //{LUA_BITLIBNAME, luaopen_bit32},
   {LUA_MATHLIBNAME, luaopen_math},
   {LUA_DBLIBNAME, luaopen_debug},
+#if defined(LUA_COMPAT_BITLIB)
+  { LUA_BITLIBNAME, luaopen_bit32 },
+#endif
+  { LUA_SOCKETLIBNAME, luaopen_socket_core },
+  { LUA_MIMELIBNAME, luaopen_mime_core },
   {NULL, NULL}
 };
 

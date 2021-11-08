@@ -45,6 +45,12 @@ LUAMOD_API int (luaopen_package) (lua_State *L);
 /* open all previous libraries */
 LUALIB_API void (luaL_openlibs) (lua_State *L);
 
+#define LUA_SOCKETLIBNAME "socket"
+LUAMOD_API int (luaopen_socket_core)(lua_State *L);
+
+#define LUA_MIMELIBNAME "mime"
+LUAMOD_API int (luaopen_mime_core)(lua_State *L);
+
 
 
 #if !defined(lua_assert)

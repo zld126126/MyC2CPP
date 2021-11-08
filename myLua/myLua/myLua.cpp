@@ -4,14 +4,22 @@
 #include "stdafx.h"
 #include<iostream>
 #include<lua.hpp>
+extern "C" {
+	#include "luasocket.h"
+}
 
-int main()
+#pragma comment(lib, "WS2_32")
+
+int main(int argc, char *argv[])
 {
-	lua_State *l = luaL_newstate();
-	luaL_openlibs(l);
-	luaL_dofile(l,"main.lua");
-	lua_close(l);
+	lua_State *lua = luaL_newstate();
+	luaL_openlibs(lua);
+	luaopen_socket_core(lua);
+	luaL_dofile(lua, "2lua.lua");
+	lua_close(lua);
+
 	system("pause");
+
 	return 0;
 }
 

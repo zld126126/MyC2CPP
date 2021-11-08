@@ -34,8 +34,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="main.lua">
-      <Filter>源文件</Filter>
-    </None>
+    <None Include="2lua.lua" />
+    <None Include="2socket.lua" />
   </ItemGroup>
 </Project>

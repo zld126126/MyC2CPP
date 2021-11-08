@@ -1,14 +1,15 @@
 参考https://blog.csdn.net/yejinxiong001/article/details/74204070
-- [myLua](#mylua)
-	- [1.安装 & 配置lua -- 项目lua](#1安装--配置lua----项目lua)
-		- [1.1创建一个解决方案承接lua库](#11创建一个解决方案承接lua库)
-		- [1.2配置lua](#12配置lua)
-		- [1.3生成lua.lib](#13生成lualib)
-		- [1.4解决问题:error C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead...](#14解决问题error-c4996-fopen-this-function-or-variable-may-be-unsafe-consider-using-fopen_s-instead)
-	- [2.使用lua-- 项目myLua](#2使用lua---项目mylua)
-		- [2.1创建一个解决方案myLua](#21创建一个解决方案mylua)
-		- [2.2配置myLua](#22配置mylua)
-		- [2.3测试lua集成:](#23测试lua集成)
+- [1.安装 & 配置lua -- 项目lua](#1安装--配置lua----项目lua)
+	- [1.1创建一个解决方案承接lua库](#11创建一个解决方案承接lua库)
+	- [1.2配置lua](#12配置lua)
+	- [1.3生成lua.lib](#13生成lualib)
+	- [1.4解决问题:error C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead...](#14解决问题error-c4996-fopen-this-function-or-variable-may-be-unsafe-consider-using-fopen_s-instead)
+- [2.使用lua-- 项目myLua](#2使用lua---项目mylua)
+	- [2.1创建一个解决方案myLua](#21创建一个解决方案mylua)
+	- [2.2配置myLua](#22配置mylua)
+	- [2.3测试lua集成:](#23测试lua集成)
+- [print(require("socket"));](#printrequiresocket)
+- [-- Author: Diego Nehab](#---author-diego-nehab)
 
 
 ## 1.安装 & 配置lua -- 项目lua
@@ -58,3 +59,77 @@ int main()
 }
 
 ```	
+
+## 3.使用lua-socket-- 项目lua-socket
+### 3.1创建一个解决方案luaSocket
+	【选择类型】->√【控制台应用程序】->√【安全开发生命周期检查】->√【预编译头】
+### 3.2配置luaSocket
+	下载luasocket:https://github.com/diegonehab/luasocket/tags
+	最新版本v3.0-rc1
+	按照lua集成luasocket流程.doc操作下载的文件
+	
+	放入luaSocket项目中
+	头文件不包括:unix.h/usocket.h
+	源文件不包括:serial.c/unix.c/usocket.c
+
+### 3.3测试lua+luasocket集成
+myLua.cpp
+```
+#include "stdafx.h"
+#include<iostream>
+#include<lua.hpp>
+extern "C" {
+	#include "luasocket.h"
+}
+
+#pragma comment(lib, "WS2_32")
+
+int main(int argc, char *argv[])
+{
+	lua_State *lua = luaL_newstate();
+	luaL_openlibs(lua);
+	luaopen_socket_core(lua);
+	luaL_dofile(lua, "2lua.lua");
+	lua_close(lua);
+
+	system("pause");
+
+	return 0;
+}
+```
+2lua.lua
+```
+print("2lua.lua");
+dofile("./2socket.lua");
+```
+2socket.lua
+```
+print("2socket.lua");
+print(require("socket"));
+-----------------------------------------------------------------------------
+-- TCP sample: Little program to dump lines received at a given port
+-- LuaSocket sample files
+-- Author: Diego Nehab
+-----------------------------------------------------------------------------
+local socket = require("socket")
+print(socket);
+host = host or "*"
+port = port or 8080
+if arg then
+	host = arg[1] or host
+	port = arg[2] or port
+end
+print("Binding to host '" ..host.. "' and port " ..port.. "...")
+s = assert(socket.bind(host, port))
+i, p   = s:getsockname()
+assert(i, p)
+print("Waiting connection from talker on " .. i .. ":" .. p .. "...")
+c = assert(s:accept())
+print("Connected. Here is the stuff:")
+l, e = c:receive()
+while not e do
+	print(l)
+	l, e = c:receive()
+end
+print(e)
+```
