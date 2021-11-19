@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "myServer", "myServer\myServer.vcxproj", "{3F5EF09F-EEBD-4983-A0D2-2B64B9BDF071}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lua", "lua\lua.vcxproj", "{508CA506-CA4F-47F6-9629-0ECE7970A4AF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "luaSocket", "luaSocket\luaSocket.vcxproj", "{AC3B45F1-6D45-47CE-AF4D-425DE5023812}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libevent", "libevent\libevent.vcxproj", "{997AB503-417D-45B0-AC65-1B2C8F853115}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F5EF09F-EEBD-4983-A0D2-2B64B9BDF071}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3F5EF09F-EEBD-4983-A0D2-2B64B9BDF071}.Debug|Win32.Build.0 = Debug|Win32
+		{3F5EF09F-EEBD-4983-A0D2-2B64B9BDF071}.Release|Win32.ActiveCfg = Release|Win32
+		{3F5EF09F-EEBD-4983-A0D2-2B64B9BDF071}.Release|Win32.Build.0 = Release|Win32
+		{508CA506-CA4F-47F6-9629-0ECE7970A4AF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{508CA506-CA4F-47F6-9629-0ECE7970A4AF}.Release|Win32.ActiveCfg = Release|Win32
+		{508CA506-CA4F-47F6-9629-0ECE7970A4AF}.Release|Win32.Build.0 = Release|Win32
+		{AC3B45F1-6D45-47CE-AF4D-425DE5023812}.Debug|Win32.ActiveCfg = Debug|Win32
+		{AC3B45F1-6D45-47CE-AF4D-425DE5023812}.Release|Win32.ActiveCfg = Release|Win32
+		{AC3B45F1-6D45-47CE-AF4D-425DE5023812}.Release|Win32.Build.0 = Release|Win32
+		{997AB503-417D-45B0-AC65-1B2C8F853115}.Debug|Win32.ActiveCfg = Debug|Win32
+		{997AB503-417D-45B0-AC65-1B2C8F853115}.Release|Win32.ActiveCfg = Release|Win32
+		{997AB503-417D-45B0-AC65-1B2C8F853115}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

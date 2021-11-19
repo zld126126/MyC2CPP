@@ -8,8 +8,6 @@ extern "C" {
 	#include "luasocket.h"
 }
 
-#pragma comment(lib, "WS2_32")
-
 int main(int argc, char *argv[])
 {
 	lua_State *lua = luaL_newstate();
