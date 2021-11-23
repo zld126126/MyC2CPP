@@ -1,27 +1,32 @@
-// myServer.cpp : 定义控制台应用程序的入口点。
+// main.cpp : 定义控制台应用程序的入口点。
 //
 
 #include "stdafx.h"
 #include "libTest.h"
+
+#include <iostream>
+
+#include "Log.h" // 打印日志
+#include "server.h" // server
+
 using namespace std;
+void test();
 
-int _tmain(int argc, _TCHAR* argv[])
+int main(int argc, char **argv)
 {
-	libtest();
-
+	test();
+	system("pause");
 	return 0;
 }
 
-void libtest(){
-	cout << "=========testMysql=========" << endl;
+void test(){
+	Logger(LOGTYPEINFO, "=========testMysql=========");
 	LibTest::testMysql();
-	cout << "=========testLua=========" << endl;
+	Logger(LOGTYPEINFO, "=========testLua=========");
 	LibTest::testLua();
-	cout << "=========testCurl=========" << endl;
+	Logger(LOGTYPEINFO, "=========testCurl=========");
 	LibTest::testCurl();
-	cout << "=========testLibevent=========" << endl;
+	Logger(LOGTYPEINFO, "=========testLibevent=========");
 	LibTest::testLibevent();
-	cout << "=========finish=========" << endl;
-
-	system("pause");
+	Logger(LOGTYPEINFO, "=========finish=========");
 }

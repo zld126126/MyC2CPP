@@ -27,15 +27,24 @@
     <ClInclude Include="libTest.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="server.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Lock.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Log.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="myServer.cpp">
+    <ClCompile Include="libTest.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="libTest.cpp">
+    <ClCompile Include="myServer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -44,6 +53,12 @@
       <Filter>资源文件</Filter>
     </None>
     <None Include="2lua.lua">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="launch.lua">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="server.lua">
       <Filter>资源文件</Filter>
     </None>
   </ItemGroup>
