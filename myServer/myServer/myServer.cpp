@@ -20,13 +20,13 @@ int main(int argc, char **argv)
 }
 
 void test(){
-	Logger(LOGTYPEINFO, "=========testMysql=========");
+	Logger::Print(Logger::LOGTYPEINFO, "=========testMysql=========");
 	LibTest::testMysql();
-	Logger(LOGTYPEINFO, "=========testLua=========");
+	Logger::Print(Logger::LOGTYPEINFO, "=========testLua=========");
 	LibTest::testLua();
-	Logger(LOGTYPEINFO, "=========testCurl=========");
+	Logger::Print(Logger::LOGTYPEINFO, "=========testCurl=========");
 	LibTest::testCurl();
-	Logger(LOGTYPEINFO, "=========testLibevent=========");
+	Logger::Print(Logger::LOGTYPEINFO, "=========testLibevent=========");
 	LibTest::testLibevent();
-	Logger(LOGTYPEINFO, "=========finish=========");
+	Logger::Print(Logger::LOGTYPEINFO, "=========finish=========");
 }
