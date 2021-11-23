@@ -1,22 +1,6 @@
-#include <iostream>
-#include <string>
-#include <errno.h>
-#include <stdio.h>
-#include <signal.h>
+#pragma once
 
-#include <curl/curl.h>
-#include <mysql/mysql.h>
-#include <lua.hpp>
-
-#include "event2/bufferevent.h"
-#include "event2/buffer.h"
-#include "event2/listener.h"
-#include "event2/util.h"
-#include "event2/event.h"
-
-#include <WinSock2.h>
-
-using namespace std;
+#include "stdafx.h"
 
 // æ≤Ã¨¿‡
 static class LibTest {

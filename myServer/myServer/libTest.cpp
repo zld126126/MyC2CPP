@@ -1,15 +1,4 @@
-#include "libTest.h"
-
-#ifdef WIN32
-extern "C" {
-	#include "luasocket.h"
-}
-static int
-openluaSocket(lua_State *L)
-{
-	return luaopen_socket_core(L);
-}
-#endif //WIN32
+#include "stdafx.h"
 
 void LibTest::testMysql(){
 	cout << "testMysql" << endl;

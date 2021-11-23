@@ -1,20 +1,5 @@
 #pragma once
-
-#include <event2/event.h> // for libevent
-
-#include "Lock.h" // for CRITICAL_SECTION
-
-#include <lua.hpp> // for lua
-#include "Log.h" // for log
-
-#ifdef WIN32
-	#include <windows.h> // for CRITICAL_SECTION
-	#include <process.h> // for startServer
-#else
-	#include <pthread.h> // for pthread_mutex_t
-#endif //WIN32
-
-using namespace std;
+#include "stdafx.h"
 
 struct lua_State;
 struct event_base;
@@ -39,6 +24,9 @@ public:
 
 	int GetID(){ return prop_ID; }
 	bool Init(const char *pFileName);
+
+	// 服务器id
+	int prop_ID;
 protected:
 	event_base *GetEventBase(){
 		return prop_EventBase;
@@ -53,9 +41,6 @@ private:
 	};
 	// 服务器状态
 	STATE prop_State;
-
-	// 服务器id
-	int prop_ID;
 
 	// libevent
 	event_base *prop_EventBase;
@@ -75,7 +60,7 @@ private:
 
 class MasterServer :public Server{
 public:
-	explicit MasterServer();
+	explicit MasterServer(int id);
 	~MasterServer(){};
 
 	void OnRpc();
@@ -93,7 +78,9 @@ public:
 	explicit SlaveServer(int id, Server *master);
 	~SlaveServer(){}
 	
+	void Run();
 	void OnRpc();
+	void OnLoop();
 	void ShutdownOver();
 private:
 	Server *prop_MasterServer;

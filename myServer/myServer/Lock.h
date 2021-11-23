@@ -1,10 +1,5 @@
 #pragma once
-
-#ifdef WIN32
-#include <windows.h>
-#else
-#include <pthread.h>
-#endif //WIN32
+#include "stdafx.h"
 
 class CLock
 {
