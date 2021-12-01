@@ -7,49 +7,50 @@
 #include <iostream>
 using namespace std;
 
+MYSQL *mysql,*res;
+MYSQL_RES *result;
+MYSQL_FIELD *field;
+
 int main()
 {
-	const char user[] = "root";
-	const char pswd[] = "root";
-	const char host[] = "localhost";
-	const char table[] = "dongbao";
-	unsigned int port = 3306;
-	MYSQL myCont;
-	MYSQL_RES *result;
-	MYSQL_ROW sql_row;
-	int res;
-	mysql_init(&myCont);
-	if (mysql_real_connect(&myCont, host, user, pswd, table, port, NULL, 0))
-	{
-		mysql_query(&myCont, "SET NAMES 'utf8'"); //设置编码格式
-		res = mysql_query(&myCont, "select * from users");//查询
-		if (!res)
-		{
-			result = mysql_store_result(&myCont);
-			if (result)
+	MYSQL_ROW row;
+	mysql = mysql_init(NULL);
+	mysql_options(mysql, MYSQL_READ_DEFAULT_GROUP, "libmysqld_client");
+
+	res = mysql_real_connect(mysql, "127.0.0.1", "root", "root", "dongbao", 3306, NULL, 0);
+
+	if (mysql_query(res, "SELECT * FROM users")){
+		fprintf(stderr, "Query failed (%s)/n", mysql_error(res));
+		exit(1);
+	}
+
+	if (!(result = mysql_store_result(res))) {
+		fprintf(stderr, "Couldn't get result from %s/n", mysql_error(res));
+		exit(1);
+	}
+
+	my_ulonglong num_rows = mysql_num_rows(result);
+	if (num_rows > 0){
+		int num_fields = mysql_num_fields(result);
+		field = mysql_fetch_field(result);
+		MYSQL_ROW row;
+
+		for (int i = 0; i < num_rows; ++i){
+			row = mysql_fetch_row(result);
+			for (int j = 0; j < num_fields; ++j)
 			{
-				while (sql_row = mysql_fetch_row(result))//获取具体的数据
-				{
-					cout << "ID:" << sql_row[1] << endl;
-					cout << "NAME:" << sql_row[2] << endl;
+				if (row[j]){
+					printf("field_name is : %s , field_value is : %s \n", field[j].name, row[j]);
 				}
 			}
 		}
-		else
-		{
-			cout << "query sql failed!" << endl;
-		}
 	}
-	else
-	{
-		cout << "connect failed!" << endl;
-	}
-	if (result != NULL)
-		mysql_free_result(result);
-	mysql_close(&myCont);
+
+	mysql_free_result(result);
+	mysql_close(mysql);
+	mysql_server_end();
 
 	// 等待程序进行
 	system("pause");
 	return 0;
 }
-
